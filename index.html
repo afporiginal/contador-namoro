@@ -2,23 +2,103 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tempo de Namoro em Tempo Real</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    label, input { display: block; margin: 10px 0; }
-    button { margin-top: 15px; }
-    #resultado { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #d64f9e;
+      margin-bottom: 20px;
+    }
+
+    label, button {
+      font-size: 1.1em;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d64f9e;
+      color: white;
+    }
+
+    input[type="datetime-local"] {
+      font-size: 1.1em;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      width: 250px;
+    }
+
+    #resultado {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #5a5a5a;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 1.1em;
+      color: #888;
+    }
+
+    footer a {
+      color: #d64f9e;
+      text-decoration: none;
+    }
+
+    .quote {
+      font-size: 1.2em;
+      color: #d64f9e;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
   </style>
 </head>
 <body>
+
   <h1>Contador de Tempo de Namoro</h1>
 
   <label for="dataInicio">Data de Início do Namoro:</label>
-  <input type="datetime-local" id="dataInicio" value="2025-04-24T20:45">
+  <input type="datetime-local" id="dataInicio">
 
   <button onclick="iniciarContagem()">Iniciar Contagem</button>
+  <button onclick="setDataAtual()">Usar Data Atual</button>
+  <button onclick="setPrimeiroDiaAno()">Usar Primeiro Dia do Ano</button>
 
   <div id="resultado"></div>
+
+  <div class="quote">
+    I'm lovin' Carol the way an angel loves God... <br>
+    pure, deep, like it's all I was made for
+  </div>
+
+  <footer>
+    Feito com carinho por <strong>afploriginal</strong><br>
+    <a href="mailto:afploriginal.luz07@hotmail.com">afploriginal.luz07@hotmail.com</a>
+  </footer>
 
   <script>
     let intervalo;
@@ -55,6 +135,17 @@
       atualizarTempo();
       intervalo = setInterval(atualizarTempo, 1000);
     }
+
+    function setDataAtual() {
+      const dataAtual = new Date();
+      document.getElementById('dataInicio').value = dataAtual.toISOString().slice(0, 16);
+    }
+
+    function setPrimeiroDiaAno() {
+      const primeiroDiaAno = new Date(new Date().getFullYear(), 0, 1, 0, 0);
+      document.getElementById('dataInicio').value = primeiroDiaAno.toISOString().slice(0, 16);
+    }
   </script>
+
 </body>
 </html>
