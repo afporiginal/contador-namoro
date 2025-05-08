@@ -1,99 +1,99 @@
-/* Geral */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f4f8;
-  color: #333;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e0ecff, #fce4ec);
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
   justify-content: center;
-  height: 100vh;
+  color: #333;
+}
+
+.container {
+  background-color: #ffffffcc;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
+  max-width: 500px;
+  width: 90%;
 }
 
 h1 {
-  font-size: 2.5em;
-  color: #4f84f5;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #4a4a8a;
+  margin-bottom: 30px;
 }
 
 label {
-  font-size: 1.1em;
-  margin-top: 10px;
+  display: block;
+  margin-bottom: 10px;
   font-weight: bold;
-  color: #4f84f5;
+  color: #555;
+  font-size: 1.1rem;
 }
 
 input[type="datetime-local"] {
-  font-size: 1.1em;
-  padding: 12px;
-  border-radius: 5px;
-  border: 2px solid #4f84f5;
-  margin-top: 10px;
-  width: 280px;
-  background-color: #fff;
-  color: #333;
-  transition: border 0.3s ease;
-}
-
-input[type="datetime-local"]:focus {
-  border: 2px solid #d64f9e;
-  outline: none;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
 button {
-  font-size: 1.2em;
-  background-color: #4f84f5;
-  color: white;
+  background-color: #6a1b9a;
+  color: #fff;
   padding: 12px 25px;
-  border-radius: 5px;
+  font-size: 1.1rem;
   border: none;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #3b6be6;
+  background-color: #8e24aa;
+  transform: scale(1.05);
 }
 
-#resultado {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-top: 20px;
-  color: #333;
+.tempo {
+  margin-top: 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #444;
 }
 
 .quote {
-  font-size: 1.2em;
-  color: #d64f9e;
-  margin-top: 20px;
+  margin-top: 40px;
   font-style: italic;
+  font-size: 1.2rem;
+  color: #d81b60;
 }
 
 footer {
-  margin-top: 50px;
-  font-size: 1.1em;
-  color: #333;
-  padding: 20px;
-  background-color: #4f84f5;
-  width: 100%;
+  margin-top: 60px;
+  padding: 25px;
+  background-color: #2e2e3e;
+  color: #fff;
   text-align: center;
-  border-radius: 10px;
+  width: 100%;
+  font-size: 1rem;
 }
 
 footer a {
-  color: #fff;
+  color: #90caf9;
   text-decoration: none;
-  font-weight: bold;
 }
 
 footer a:hover {
-  color: #d64f9e;
-}
-
-footer p {
-  margin: 5px 0;
+  text-decoration: underline;
 }
