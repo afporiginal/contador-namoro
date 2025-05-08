@@ -3,32 +3,34 @@ let intervalo;
 function iniciarContagem() {
   clearInterval(intervalo);
 
-  const inicioInput = document.getElementById('dataInicio').value;
-  const inicio = new Date(inicioInput);
+  const input = document.getElementById('dataInicio');
+  if (!input || !input.value) return;
 
-  if (!inicioInput || isNaN(inicio.getTime())) {
+  const inicio = new Date(input.value);
+  if (isNaN(inicio.getTime())) {
     document.getElementById('resultado').textContent = "Por favor, insira uma data válida.";
     return;
   }
 
-  function atualizarTempo() {
+  function atualizar() {
     const agora = new Date();
-    const diffMs = agora - inicio;
+    const diff = agora - inicio;
 
-    const segundosTotais = Math.floor(diffMs / 1000);
-    const minutosTotais = Math.floor(segundosTotais / 60);
-    const horasTotais = Math.floor(minutosTotais / 60);
-    const diasTotais = Math.floor(horasTotais / 24);
+    if (diff < 0) {
+      document.getElementById('resultado').textContent = "A data está no futuro.";
+      return;
+    }
 
-    const dias = diasTotais;
-    const horas = horasTotais % 24;
-    const minutos = minutosTotais % 60;
-    const segundos = segundosTotais % 60;
+    const totalSegundos = Math.floor(diff / 1000);
+    const dias = Math.floor(totalSegundos / (60 * 60 * 24));
+    const horas = Math.floor((totalSegundos % (60 * 60 * 24)) / 3600);
+    const minutos = Math.floor((totalSegundos % 3600) / 60);
+    const segundos = totalSegundos % 60;
 
     document.getElementById('resultado').textContent =
       `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos.`;
   }
 
-  atualizarTempo();
-  intervalo = setInterval(atualizarTempo, 1000);
+  atualizar();
+  intervalo = setInterval(atualizar, 1000);
 }
