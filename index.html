@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tempo de Namoro em Tempo Real</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label, input { display: block; margin: 10px 0; }
+    button { margin-top: 15px; }
+    #resultado { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Contador de Tempo de Namoro</h1>
 
+  <label for="dataInicio">Data de Início do Namoro:</label>
+  <input type="datetime-local" id="dataInicio" value="2025-04-24T20:45">
+
+  <button onclick="iniciarContagem()">Iniciar Contagem</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    let intervalo;
+
+    function iniciarContagem() {
+      clearInterval(intervalo);
+
+      const inicioInput = document.getElementById('dataInicio').value;
+      const inicio = new Date(inicioInput);
+
+      if (!inicioInput || isNaN(inicio.getTime())) {
+        document.getElementById('resultado').textContent = "Por favor, insira uma data válida.";
+        return;
+      }
+
+      function atualizarTempo() {
+        const agora = new Date();
+        const diffMs = agora - inicio;
+
+        const segundosTotais = Math.floor(diffMs / 1000);
+        const minutosTotais = Math.floor(segundosTotais / 60);
+        const horasTotais = Math.floor(minutosTotais / 60);
+        const diasTotais = Math.floor(horasTotais / 24);
+
+        const dias = diasTotais;
+        const horas = horasTotais % 24;
+        const minutos = minutosTotais % 60;
+        const segundos = segundosTotais % 60;
+
+        document.getElementById('resultado').textContent =
+          `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos.`;
+      }
+
+      atualizarTempo();
+      intervalo = setInterval(atualizarTempo, 1000);
+    }
+  </script>
+</body>
+</html>
