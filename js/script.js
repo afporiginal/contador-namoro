@@ -4,10 +4,9 @@ function iniciarContagem() {
   clearInterval(intervalo);
 
   const input = document.getElementById('dataInicio');
-  if (!input || !input.value) return;
-
   const inicio = new Date(input.value);
-  if (isNaN(inicio.getTime())) {
+
+  if (!input.value || isNaN(inicio.getTime())) {
     document.getElementById('resultado').textContent = "Por favor, insira uma data válida.";
     return;
   }
