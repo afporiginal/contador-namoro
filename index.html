@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tempo de Namoro em Tempo Real</title>
   <style>
+    /* Geral */
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f7f6;
+      background-color: #f0f4f8;
       color: #333;
       margin: 0;
       padding: 0;
@@ -21,51 +22,55 @@
 
     h1 {
       font-size: 2.5em;
-      color: #d64f9e;
+      color: #4f84f5;
       margin-bottom: 20px;
     }
 
-    label, button {
+    label {
       font-size: 1.1em;
       margin-top: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #d64f9e;
-      color: white;
+      font-weight: bold;
+      color: #4f84f5;
     }
 
     input[type="datetime-local"] {
       font-size: 1.1em;
-      padding: 10px;
+      padding: 12px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 2px solid #4f84f5;
       margin-top: 10px;
-      width: 250px;
+      width: 280px;
+      background-color: #fff;
+      color: #333;
+      transition: border 0.3s ease;
+    }
+
+    input[type="datetime-local"]:focus {
+      border: 2px solid #d64f9e;
+      outline: none;
+    }
+
+    button {
+      font-size: 1.2em;
+      background-color: #4f84f5;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #3b6be6;
     }
 
     #resultado {
       font-size: 1.2em;
       font-weight: bold;
       margin-top: 20px;
-      color: #5a5a5a;
-    }
-
-    footer {
-      margin-top: 50px;
-      font-size: 1.1em;
-      color: #888;
-    }
-
-    footer a {
-      color: #d64f9e;
-      text-decoration: none;
+      color: #333;
     }
 
     .quote {
@@ -75,6 +80,31 @@
       font-style: italic;
     }
 
+    footer {
+      margin-top: 50px;
+      font-size: 1.1em;
+      color: #333;
+      padding: 20px;
+      background-color: #4f84f5;
+      width: 100%;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      color: #d64f9e;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
   </style>
 </head>
 <body>
@@ -82,11 +112,9 @@
   <h1>Contador de Tempo de Namoro</h1>
 
   <label for="dataInicio">Data de Início do Namoro:</label>
-  <input type="datetime-local" id="dataInicio">
+  <input type="datetime-local" id="dataInicio" value="2025-01-01T00:00">
 
   <button onclick="iniciarContagem()">Iniciar Contagem</button>
-  <button onclick="setDataAtual()">Usar Data Atual</button>
-  <button onclick="setPrimeiroDiaAno()">Usar Primeiro Dia do Ano</button>
 
   <div id="resultado"></div>
 
@@ -96,8 +124,8 @@
   </div>
 
   <footer>
-    Feito com carinho por <strong>afploriginal</strong><br>
-    <a href="mailto:afploriginal.luz07@hotmail.com">afploriginal.luz07@hotmail.com</a>
+    <p>Feito com carinho por <strong>afploriginal</strong></p>
+    <p><a href="mailto:afploriginal.luz07@hotmail.com">afploriginal.luz07@hotmail.com</a></p>
   </footer>
 
   <script>
@@ -134,16 +162,6 @@
 
       atualizarTempo();
       intervalo = setInterval(atualizarTempo, 1000);
-    }
-
-    function setDataAtual() {
-      const dataAtual = new Date();
-      document.getElementById('dataInicio').value = dataAtual.toISOString().slice(0, 16);
-    }
-
-    function setPrimeiroDiaAno() {
-      const primeiroDiaAno = new Date(new Date().getFullYear(), 0, 1, 0, 0);
-      document.getElementById('dataInicio').value = primeiroDiaAno.toISOString().slice(0, 16);
     }
   </script>
 
